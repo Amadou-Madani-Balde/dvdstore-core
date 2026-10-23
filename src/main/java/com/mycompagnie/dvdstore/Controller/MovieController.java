@@ -12,6 +12,7 @@ public class MovieController {
     }
 
     public void setMovieService(MovieServiceInterface movieService) {
+
         this.movieService = movieService;
     }
 
@@ -31,5 +32,7 @@ public class MovieController {
         movie.setTitle(nom);
         movieService.registerMovie(movie);
     }
+
+
 }
 
