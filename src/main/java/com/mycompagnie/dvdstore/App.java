@@ -1,20 +1,25 @@
 package com.mycompagnie.dvdstore;
 
 import com.mycompagnie.dvdstore.Controller.MovieController;
-import com.mycompagnie.dvdstore.Repository.FileMovieRepository;
-import com.mycompagnie.dvdstore.Service.DefaultMovieService;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+
 /**
- * Hello world!
+ *
  *
  */
-public class App 
+@SpringBootApplication
+public class App
 {
-    public static void main( String[] args )
-    {
-        ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+    public static void main( String[] args ) {
+
+        //ApplicationContext context=new AnnotationConfigApplicationContext(App.class);
+        ApplicationContext context= SpringApplication.run(App.class,args);
+
         MovieController movieController=context.getBean(MovieController.class);
+
         movieController.addUsingConsole();
     }
 }

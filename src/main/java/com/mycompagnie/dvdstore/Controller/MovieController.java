@@ -1,38 +1,36 @@
 package com.mycompagnie.dvdstore.Controller;
 
-import com.mycompagnie.dvdstore.Service.MovieServiceInterface;
 import com.mycompagnie.dvdstore.entity.Movie;
+import com.mycompagnie.dvdstore.Service.MovieServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
 
+@Controller
 public class MovieController {
+
+    @Autowired
+    private MovieServiceInterface movieService;
 
     public MovieServiceInterface getMovieService() {
         return movieService;
     }
 
     public void setMovieService(MovieServiceInterface movieService) {
-
         this.movieService = movieService;
     }
 
-    private MovieServiceInterface movieService;
-
-    public void addUsingConsole () {
-
-        System.out.println( "Veuillez saisir le nom du film" );
-        Scanner sc = new Scanner(System.in);
-        String nom = sc.nextLine();
-
-        System.out.println( "Veuillez saisir le genre du film" );
-        String genre = sc.nextLine();
-
-        Movie movie = new Movie();
+    public void addUsingConsole(){
+        System.out.println( "What is the movie title?" );
+        Scanner scanner=new Scanner(System.in);
+        String title=scanner.nextLine();
+        System.out.println( "What is the movie genre?" );
+        String genre=scanner.nextLine();
+        Movie movie=new Movie();
+        movie.setTitle(title);
         movie.setGenre(genre);
-        movie.setTitle(nom);
         movieService.registerMovie(movie);
     }
 
-
 }
-
