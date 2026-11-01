@@ -7,5 +7,11 @@
 </head>
 <body>
     <h1> DVDStore : Votre boutique de DVD en ligne. </h1>
+    <table border="1">
+        <tr th:each="movie: ${movies}">
+            <td th:text="${movie.title}"></td>
+            <td th:text="${movie.genre}"></td>
+        </tr>
+    </table>
 </body>
 </html>
